@@ -5,6 +5,8 @@
 //Defination :- Array are collection of homogenous(similar) elements.
 //Indexing in array starts from 0, i.e if the size of the array is 10 then it will store the elemnts till 9th index.
 
+//Array elements are stored in a contigious memory (in a line).
+
 // Last element is not a null character unless explicitly initialized or used in a string.
 
 #include <stdio.h>
@@ -49,12 +51,26 @@ int main()
     {
         printf("%d ", array[i]);
     }
+
+    //QUESTION : How Do you confirm that array elements are stored in contigious manner...?
+    //Address of the element :- Base address + size of data type * n-1;
+    //QUESTION : Why did we used n-1 insted of n.....?
+    //Observe the output for the loop
+    printf("\nAddress of the elements in the loop : ");
+    for (int i = 0; i < 5; i++)
+    {
+        printf("%p ",&array[i]);
+    }
+    
     //We can also access the middle elemnts of the array directly;
-    printf("%d", array[3]);
+
+    printf("\nAccessing element directly : - %d", array[3]);
 
     //Similarly we can also make arrays for float,chars.
     char arr[5];
+
     //Asks from user and assign it to array 
+
     //TRY : give the string like "abcde" in the first iteration of the loop and observe what happens.
     for (int i = 0; i < 5; i++)
     {
@@ -66,7 +82,9 @@ int main()
     {
         printf("%c ", arr[i]);
     }
-    //This was about dynamic array means that here we were known about the size of the array like 5 or any contant number.
+    //These were one examples of one dimensional static array. 
+
+    //This was about static array means that here we were known about the size of the array like 5 or any contant number.
 
     // we can not do the following in c because the array size must be known at compile time only, It can not be a variable.
     // int n;
