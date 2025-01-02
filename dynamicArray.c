@@ -25,6 +25,9 @@ int main()
 	scanf("%d", &size); 
 
 	// Memory allocates dynamically using malloc() 
+    //The ptr was of type int that is why we also casted the pointer into int type.
+    //size * sizeof(int) means that sppose the size if 5 and size of one int data type is 4 byte then (5*4) which will become 20.
+    //The whole sentence means that we are asking the malloc to please give us 20 size of memory from the storage, It will give a pointer which would be pointing to that memory and then we typecast that pointer to the we want in this case "int".
 	ptr = (int*)malloc(size * sizeof(int)); 
 
 	// Checking for memory allocation 
