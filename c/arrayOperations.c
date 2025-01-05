@@ -27,42 +27,65 @@ void insertAll(int arr[], int size)
     {
         // We are writing i+1 for user understanding but the array is still 0 based index only.
         printf("Enter element %d => ", i + 1);
-        //we use amersapnd(&) to refer to that memrory address of the variable.
-        //QUESTION : What will happen if we not use "&"..? It will not work but WHY...? Form answer on your own language and search on internet to verify.
+        // we use amersapnd(&) to refer to that memrory address of the variable.
+        // QUESTION : What will happen if we not use "&"..? It will not work but WHY...? Form answer on your own language and search on internet to verify.
         scanf("%d", &arr[i]);
     }
 }
 void traverse(int arr[], int size)
 {
-    //QUESTION :  WHy did we not write "i <= size" insted of "i<size"...?
+    // QUESTION :  WHy did we not write "i <= size" insted of "i<size"...?
     for (int i = 0; i < size; i++)
     {
         printf(" %d ,", arr[i]);
     }
 }
 
-void search(int arr[],int size,int key){
-    //This is called flag variable, we will learn about them further until learn about them on your own.
-    int found=0;
+void search(int arr[], int size, int key)
+{
+    // This is called flag variable, we will learn about them further until learn about them on your own.
+    int found = 0;
     for (int i = 0; i < size; i++)
     {
-        if(arr[i]==key){
-            //QUESTION : What will happen if we wrote key at place of arr[i] in below staement.
-            printf("Value %d , found at index %d . ",arr[i] ,i);
-            found=1;
-            //Observe why did we write just written "Return" without any data type and from this what can you say about "void"...?
+        if (arr[i] == key)
+        {
+            // QUESTION : What will happen if we wrote key at place of arr[i] in below staement.
+            printf("Value %d , found at index %d . ", arr[i], i);
+            found = 1;
+            // Observe why did we write just written "Return" without any data type and from this what can you say about "void"...?
             return;
         }
     }
-    if (found!=1)
+    if (found != 1)
         printf("\nVALUE NOT PRESENT IN THE ARRAY\n");
-    //QUESTION : How wil you search for your friend in the class in this manner...? can you write code for the same..? Try it and try to come up with a more efficient search.
+    // QUESTION : How wil you search for your friend in the class in this manner...? can you write code for the same..? Try it and try to come up with a more efficient search.
 }
+
+void sort(int arr[], int size)
+{
+    //QUESTION : What will happen if user sort before entering the elements..? How can we prevent this...?
+    for (int i = 0; i < size-1; i++)
+    {
+        for (int j = 0; j < size-1; j++)
+        {
+            if (arr[j]>arr[j+1]){
+                int temp= arr[j];
+                arr[j]=arr[j+1];
+                arr[j+1]=temp;
+            }
+        }
+    }
+    printf("\nArray sorted \n");
+    //Note how we called another function inside a function.
+    traverse(arr,size);
+}
+
 int main()
 {
     int choice;
     int arr[10];
     // We will create a menu driven program for the array operations.
+    int key;
     do
     {
         printf("\nWELCOME TO ARRAY MENU CHOOSE YOUR OPTION ");
@@ -74,7 +97,7 @@ int main()
         printf("\n6. Insert element ");
         printf("\n7. Exit program ");
         printf("\n>>> ");
-        //QUESTION : What will happen if we add a another space after %d in the scanf..? Try and observe the output.
+        // QUESTION : What will happen if we add a another space after %d in the scanf..? Try and observe the output.
         scanf("%d", &choice);
         // Switch cases for different operation function calls.
 
@@ -84,13 +107,12 @@ int main()
             insertAll(arr, MAX);
             break;
         case 2:
-            int key;
             printf("Enter element to seearch : ");
-            scanf("%d",&key);
-            insertAll(arr, MAX,key);
+            scanf("%d", &key);
+            search(arr, MAX, key);
             break;
         case 3:
-            /* code */
+            sort(arr, MAX);
             break;
         case 4:
             traverse(arr, MAX);
