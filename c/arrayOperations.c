@@ -1,5 +1,7 @@
 // In the following code we will do general operations peformed on an array
 
+//THE PURPOSE OF THE CODE IS NOT TO GIVE YOU CODE BUT TO MAKE YOU THINK, IF YOU ONLY WANTS CODE IT MIGHT BE NOT FOR YOU.
+
 // General operation that can be peformed are :-
 
 // 1. Searching : It refers to the act of findig wether a particular value is present in the group of elements. Searching is of further 2 types binary and linear search. In this file we will only see linear search. In this file we will also look for the searching of elemts before and after the given the given value.
@@ -19,7 +21,7 @@
 #include <stdio.h>
 
 // For saake of simplicity in program we have take MAX(size) as 10, Although it is not a good practice and we will further see how to solve this issue with arrays.
-int MAX = 10;
+int static MAX = 10;
 
 void insertAll(int arr[], int size)
 {
@@ -41,7 +43,24 @@ void traverse(int arr[], int size)
     }
 }
 
-void search(int arr[], int size, int key)
+void delete(int arr[], int size)
+{
+    //QUESTION :  WHat will happen if the user wants to delete elemt before entering elemnts..? Run and try and try to solve the problem on your own.
+    int val, idx;
+    printf("\nEnter value to be deleted : ");
+    scanf("%d", &val);
+    idx = search(arr, size, val);
+    //Why did we did MAX--...?
+    MAX--;
+    for (int i = idx; i < size - 1; i++)
+    {
+        //Try to dry run the following code and see what happens;
+        arr[i] = arr[i + 1]; 
+    }
+
+}
+
+int search(int arr[], int size, int key)
 {
     // This is called flag variable, we will learn about them further until learn about them on your own.
     int found = 0;
@@ -53,31 +72,33 @@ void search(int arr[], int size, int key)
             printf("Value %d , found at index %d . ", arr[i], i);
             found = 1;
             // Observe why did we write just written "Return" without any data type and from this what can you say about "void"...?
-            return;
+            return i;
         }
     }
     if (found != 1)
         printf("\nVALUE NOT PRESENT IN THE ARRAY\n");
+    return 0;
     // QUESTION : How wil you search for your friend in the class in this manner...? can you write code for the same..? Try it and try to come up with a more efficient search.
 }
 
 void sort(int arr[], int size)
 {
-    //QUESTION : What will happen if user sort before entering the elements..? How can we prevent this...?
-    for (int i = 0; i < size-1; i++)
+    // QUESTION : What will happen if user sort before entering the elements..? How can we prevent this...?
+    for (int i = 0; i < size - 1; i++)
     {
-        for (int j = 0; j < size-1; j++)
+        for (int j = 0; j < size - 1; j++)
         {
-            if (arr[j]>arr[j+1]){
-                int temp= arr[j];
-                arr[j]=arr[j+1];
-                arr[j+1]=temp;
+            if (arr[j] > arr[j + 1])
+            {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
             }
         }
     }
     printf("\nArray sorted \n");
-    //Note how we called another function inside a function.
-    traverse(arr,size);
+    // Note how we called another function inside a function.
+    traverse(arr, size);
 }
 
 int main()
@@ -118,7 +139,7 @@ int main()
             traverse(arr, MAX);
             break;
         case 5:
-            /* code */
+            delete (arr, MAX);
             break;
         case 6:
             /* code */
