@@ -15,26 +15,12 @@
 
 //-------------------------------------------------------------------------------
 // DATA TYPES IN JAVA
-//
+// Like other languages java has 2 types of data types:-
+//1. Primitive/ Basic data types like :-  byte,short,int,long,floatt,double,char,boolean
+//In non primitive we have :- String,arrays,classses etc.
 
 //--------------------------------------------------------------------------------
 
-// package Java;
-// public class Basics {
-//     public static void main(String[] args) {
-//         System.out.println("\033[H\033[2J");
-//         System.out.flush();
-//         int arr[] = { 10, 20, 30 };
-//         for (int i = 0; i < 3; i++) {
-//             System.out.println(arr[i]);
-//         }
-//     }
-// }
+//
 
 //---------------------------------------------------------------------------
-
-public class Basics {
-    public static void main(String[] args) {
-        System.out.println("");
-    }
-}
